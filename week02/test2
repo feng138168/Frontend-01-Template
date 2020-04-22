@@ -1,0 +1,12 @@
+var a = 1
+
+InputElement
+    WhiteSpace
+    LineTerminator
+    Comment
+    Token
+        Puncatuator =
+        Keywords var
+
+        Identifier  a
+        Literal 1
