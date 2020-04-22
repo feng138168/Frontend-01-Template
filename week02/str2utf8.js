@@ -1,7 +1,7 @@
 function str2utf8(str){
     let arr = []
     for(var i = 0; i< str.length; i++){
-        arr[i] = []
+        arr[i] = ''
 
         const nums2 = str.charCodeAt(i).toString(2)
         const nums16 = str.charCodeAt(i).toString(16)
@@ -14,29 +14,28 @@ function str2utf8(str){
             let nums2utf = ''
             let nums = nums2Arr.pop()
             while(typeof nums !== 'undefined'){
-                console.log(nums,nums2utf,numsCeil)
-                if((nums2utf.length + numsCeil + 1) % 8 === 0 && k === 0){
+                if((nums2utf.length + numsCeil + 2) % 8 === 0 && k === 0){
                     nums2utf = getNums('1',numsCeil)+'0'+ nums + nums2utf
-                    arr[i].push(nums2utf)
+                    arr[i]+=nums2utf
                     nums2utf = ''
                     k ++ 
-                }else if((nums2utf.length + 2) % 8 === 0 && k > 0) {
+                }else if((nums2utf.length + 3) % 8 === 0 && k > 0) {
                     nums2utf = '10'+ nums + nums2utf
-                    arr[i].push(nums2utf)
+                    arr[i]+=nums2utf
                     nums2utf = ''
                     k ++ 
                 }else {
                     nums2utf = nums + nums2utf
                 }
-                if(nums2.length === 0 && nums2utf.length < numsCeil * 8){
-                    nums2utf = '10'+ getNums('0',numsCeil * 8 - nums2utf.length) + nums2utf
-                    arr[i].push(nums2utf)
+                if(nums2Arr.length === 0 && nums2utf.length < numsCeil * 8){
+                    nums2utf = '10'+ getNums('0',6 - nums2utf.length) + nums2utf
+                    arr[i]+=nums2utf
                     nums2utf = ''
                     k ++ 
                 }
                 nums = nums2Arr.pop()
             }
-            arr.push(nums2utf)
+            arr[i] = parseInt(arr[i],2).toString(16)
         }
         
     }
@@ -64,4 +63,4 @@ function getLen(unicode){
     }
 }
 
-console.log(str2utf8('厉害'))
+console.log(str2utf8('严'))
