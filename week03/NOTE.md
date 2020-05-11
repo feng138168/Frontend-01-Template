@@ -1,12 +1,4 @@
 # 每周总结可以写在这里
-<<<<<<< HEAD
-
-Expression
-Grammer
-
-Runtime
-
-=======
 ## 简单语句
 - ExpressionStatement   a = 1 + 2;
 - EmptyStatement    ;
@@ -73,4 +65,3 @@ in
 - WeakSet 
 - UInt8ClampedArray 
 - Function
->>>>>>> a0bca1e1196f52108b9a258731c00dc8f16952b7
