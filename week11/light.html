@@ -1,0 +1,32 @@
+<div>
+    <div id="light" class="light"></div>
+</div>
+<style>
+    .light{
+        width: 100px;
+        height: 100px;
+        background: gray;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+</style>
+<script>
+function sleep(sec){
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve()
+        },sec * 1000)
+    })
+}
+let light = document.getElementById('light')
+async function changeLightColor() {
+    light.style.background = 'green'
+    await sleep(10)
+    light.style.background = 'yellow'
+    await sleep(2)
+    light.style.background = 'red'
+    await sleep(5)
+    changeLightColor()
+}
+changeLightColor()
+</script>

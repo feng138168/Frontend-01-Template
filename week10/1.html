@@ -1,0 +1,50 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    .box {}
+
+    .ol {
+        display: flex;
+        align-items: center;
+    }
+
+    .li {
+        background: green;
+        color: red;
+        width: 50px;
+        height: 50px;
+        margin: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+    }
+</style>
+<div class="box" id="app">
+    <div class="ol" v-for="(item, index) in pattern" :key="index">
+        <div class="li" v-for="(ite, ind) in item" :key="ind" @click="move(ind,index)">
+            {{ite === 1?'×':ite === 2?'○':''}}</div>
+    </div>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                pattern: [
+                    [1, 0, 0],
+                    [0, 2, 0],
+                    [0, 0, 0]
+                ]
+            }
+        },
+        methods: {
+            move(x, y) {
+                // let arr = this.pattern
+                // arr[y][x] = 1
+                // this.pattern = arr
+                this.$set(this.pattern[y], x, 2)
+                console.log(this.pattern)
+            }
+        },
+    })
+</script>
