@@ -18,7 +18,7 @@
                 usedReactivities.push([obj, prop])
                 if(typeof obj[prop] === "object"){
                     return reactive(obj[prop])
-                }
+                 }
                 return obj[prop]
             },
             set(obj,prop,val){
